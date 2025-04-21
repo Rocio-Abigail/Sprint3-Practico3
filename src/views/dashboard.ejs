@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard de Superhéroes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-black min-h-screen py-10 text-white">
+  <div class="max-w-7xl mx-auto px-4">
+
+    <!-- <% if (typeof exito !== 'undefined') { %>
+      <% if (exito === 'true') { %>
+        <div id="mensaje-exito" class="bg-green-100 border border-green-400 text-green-800 px-4 py-3 rounded mb-4 text-center font-semibold">
+          ¡Superhéroe agregado exitosamente!
+        </div>
+      <% } else if (exito === 'editado') { %>
+        <div id="mensaje-exito" class="bg-orange-100 border border-orange-400 text-orange-800 px-4 py-3 rounded mb-4 text-center font-semibold">
+          ¡Superhéroe actualizado exitosamente!
+        </div>
+      <% } else if (exito === 'eliminado') { %>
+        <div id="mensaje-exito" class="bg-red-100 border border-red-400 text-red-800 px-4 py-3 rounded mb-4 text-center font-semibold">
+          ¡Superhéroe eliminado exitosamente!
+        </div>
+      <% } %>
+    <% } %> -->
+
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
+      <h1 class="text-4xl font-extrabold text-yellow-400 text-center md:text-left tracking-wide">Colección de Superhéroes</h1>
+      <a href="/api/formulario" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-5 rounded-full shadow-lg transition-all">
+        + Agregar Superhéroe
+      </a>
+    </div>
+
+    <% if (superheroes.length === 0) { %>
+      <div class="bg-yellow-100 text-yellow-900 p-4 rounded shadow text-center font-medium">
+        No hay superhéroes para mostrar.
+      </div>
+    <% } else { %>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <% superheroes.forEach(hero => { %>
+          <div class="bg-gray-800 border-2 border-yellow-500 rounded-2xl shadow-xl p-5 hover:scale-105 transform transition duration-300">
+            <h2 class="text-2xl font-bold text-yellow-400 mb-3 text-center uppercase tracking-wider"><%= hero.nombreSuperHeroe %></h2>
+            <div class="text-sm space-y-1 text-gray-300">
+              <p><strong>Nombre real:</strong> <%= hero.nombreReal %></p>
+              <p><strong>Edad:</strong> <%= hero.edad %></p>
+              <p><strong>Planeta Origen:</strong> <%= hero.planetaOrigen %></p>
+              <p><strong>Debilidad:</strong> <%= hero.debilidad %></p>
+              <p><strong>Poderes:</strong> <%= hero.poderes.join(", ") %></p>
+              <p><strong>Aliados:</strong> <%= hero.aliados.join(", ") %></p>
+              <p><strong>Enemigos:</strong> <%= hero.enemigos.join(", ") %></p>
+              <p><strong>Creador:</strong> <%= hero.creador %></p>
+            </div>
+
+            <div class="flex justify-between mt-4">
+              <a href="/api/heroes/<%= hero._id %>/editar" class="bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold py-1.5 px-4 rounded-full transition">
+                Editar
+              </a>
+              <form action="/api/heroes/<%= hero._id %>?_method=DELETE" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este superhéroe?');">
+                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold py-1.5 px-4 rounded-full transition">
+                  Eliminar
+                </button>
+              </form>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } %>
+  </div>
+
+  <!-- <script>
+    setTimeout(() => {
+      const mensaje = document.getElementById("mensaje-exito");
+      if (mensaje) mensaje.remove();
+    }, 5000);
+  </script> -->
+</body>
+</html>
+
+
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Agregar Superhéroe</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-yellow-300 py-10">
+  <div class="max-w-3xl mx-auto bg-gray-800 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+    <h1 class="text-3xl font-bold mb-6 text-center">Agregar Superhéroe</h1>
+
+    <!-- <% if (errores && errores.length > 0) { %>
+      <div id="alerta" class="bg-red-800 border border-red-600 text-yellow-200 px-4 py-3 rounded mb-6">
+        <p class="font-bold mb-2">Se encontraron <%= errores.length %> errores:</p>
+        <ul class="list-disc list-inside">
+          <% errores.forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %> -->
+
+    <form action="/api/heroes/agregar" method="POST">
+      <div class="mb-4">
+        <label class="block mb-1">Nombre del Superhéroe</label>
+        <input name="nombreSuperHeroe" class="bg-white text-black border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-1">Nombre Real</label>
+        <input name="nombreReal" class="bg-white text-black border border-gray-300 rounded w-full py-2 px-3">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-1">Edad</label>
+        <input type="number" name="edad" class="bg-white text-black border border-gray-300 rounded w-full py-2 px-3">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-1">Planeta de Origen</label>
+        <input name="planetaOrigen" class="bg-white text-black border border-gray-300 rounded w-full py-2 px-3">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-1">Debilidad</label>
+        <input name="debilidad" class="bg-white text-black border border-gray-300 rounded w-full py-2 px-3">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-1">Poderes (separados por coma)</label>
+        <input name="poderes" class="bg-white text-black border border-gray-300 rounded w-full py-2 px-3">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-1">Aliados (separados por coma)</label>
+        <input name="aliados" class="bg-white text-black border border-gray-300 rounded w-full py-2 px-3">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-1">Enemigos (separados por coma)</label>
+        <input name="enemigos" class="bg-white text-black border border-gray-300 rounded w-full py-2 px-3">
+      </div>
+
+      <div class="mb-6">
+        <label class="block mb-1">Creador</label>
+        <input name="creador" class="bg-white text-black border border-gray-300 rounded w-full py-2 px-3">
+      </div>
+
+      <div class="flex items-center justify-between">
+        <button type="submit" class="bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold py-2 px-4 rounded">
+          Agregar Superhéroe
+        </button>
+        <a href="/api/dashboard" class="ml-4 inline-block bg-gray-700 hover:bg-gray-600 text-yellow-300 font-bold py-2 px-4 rounded">
+          Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+
+  <!-- <script>
+    setTimeout(() => {
+      const alertBox = document.getElementById('alerta');
+      if (alertBox) {
+        alertBox.style.display = 'none';
+      }
+    }, 5000);
+  </script> -->
+</body>
+</html>
+
+
